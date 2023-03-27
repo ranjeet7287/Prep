@@ -17,7 +17,6 @@ using namespace std;
 int longest(string str,int k){
     int i=0,j=0;
     int maxi=INT_MIN;
-    int count=0;
     unordered_map<char,int> map;
     map.clear(); 
     while(j<str.size()){
