@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int i=1,y=0;
+    while(i<=n){
+        int k=1;
+        while(k<=n-i){
+            cout<<" ";
+            k++;
+        }
+        int j=1;
+        while(j<=i){
+            cout<<(j+y);
+            j++;
+        }
+        cout<<endl;
+        i++;
+        y++;
+    }
+}
