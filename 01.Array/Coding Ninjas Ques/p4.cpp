@@ -17,3 +17,20 @@ int maxArea(vector<int>& height) {
     }
     return maxArea;
 }
+int maxArea(int *height){
+  int l=0;
+  int r=height.size()-1;
+  int maxarea=0;
+  while(l<r){
+    int lh=height[l];
+    int rh=height[r];
+    int min_h=min(lh,rh);
+    maxarea=max(maxarea,min_h*(r-l));
+    if(lh<rh){
+      l++;
+    }else{
+      r--;
+    }
+  }
+  return maxarea;
+}
