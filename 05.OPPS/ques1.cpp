@@ -1,4 +1,4 @@
-// OPPS are maily asked in our debugging skil tests.
+// OPPS are mainly asked in our debugging skil tests.
 // CREATING 
 #include<bits/stdc++.h>
 using namespace std;
