@@ -28,12 +28,53 @@ class BST {
     }
 
 	/*----------------- Public Functions of BST -----------------*/
-
+    private:
+    BinaryTreeNode<int> *deletedata(int data,BinaryTreeNode<int> *root){
+        if(root==NULL){
+            return NULL;
+        }
+        if(root->data > data){
+            root->left=deletedata(data,root->left);
+        }else if(root->data < data){
+            root->right=deletedata(data,root->right);
+        }else{
+            // 1. if both left and right node are null
+            if(root->left==NULL && root->right==NULL){
+                delete root;
+                return NULL;
+            }
+            // 2. if left node is NULL then right node beacome root node and delete root , intailise with newnode
+            else if(root->left==NULL){
+                BinaryTreeNode<int> *newnode=root->right;
+                root->right=NULL;
+                delete root;
+                return newnode;
+            }
+            // 3. Similar condtion for left side 
+            else if(root->right==NULL) {
+                BinaryTreeNode<int> *newnode=root->left;
+                root->left=NULL;
+                delete root;
+                return newnode;
+            }
+            // 4.If both side have nodes then we will do replacement
+            else{
+                BinaryTreeNode<int> *minNode=root->right;
+                while(minNode->left!=NULL){
+                    minNode=minNode->left;
+                }
+                int rightmin=minNode->data;
+                root->data=rightmin;
+                root->right=deletedata(rightmin,root->right);
+                return root;
+            }
+        }
+    }
+    public:
     void remove(int data) { 
         // Implement the remove() function 
-        
+        root=deletedata(data,root);
     }
-
     private:
     void print(BinaryTreeNode<int> *root){
         if(root==NULL){
