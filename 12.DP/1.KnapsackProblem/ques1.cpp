@@ -49,17 +49,17 @@ int knapsack(int* wt, int* val, int n, int w) {
             }
         }
     }
-    if(wt[n-1]<=w){
-        t[n][w]=max(val[n-1]+t[n-1][w-wt[n-1]],t[n-1][w]);
-    }else {
-        t[n][w]=t[n-1][w];
-    }
+    // if(wt[n-1]<=w){
+    //     t[n][w]=max(val[n-1]+t[n-1][w-wt[n-1]],t[n-1][w]);
+    // }else {
+    //     t[n][w]=t[n-1][w];
+    // }
     for(int i=1;i<n+1;i++){
         for(int j=1;j<w+1;j++){
             if(wt[i-1]<=j){
                 t[i][j]=max(val[i-1]+t[i-1][j-wt[i-1]],t[i-1][j]);
             }else {
-                t[i][j]=t[j][i-1];
+                t[i][j]=t[i-1][j];
             }
         }
     }
